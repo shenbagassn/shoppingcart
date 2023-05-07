@@ -23,16 +23,18 @@
                           <p *ngIf=" usrname.touched && usrname.invalid" class="alert alert-danger">
                             Please enter username
                           </p>
-                          <input type="password" name="Password" ngModel placeholder="Password" required>
-                          <p>
+                          <input type="password" #prc="ngModel" name="Password" ngModel placeholder="Password" required>
+                          <p *ngIf="prc.touched && prc.invalid" class="alert alert-danger">
                             Please enter password
                           </p>
-                          <input type="email" name="Email" ngModel placeholder="Email Address" required>
-                          <p>
+                          <input type="email" #email="ngModel" name="Email" ngModel placeholder="Email Address" required>
+                          <p *ngIf="email.touched && email.invalid" class="alert alert-danger">
                             Please enter email
                           </p>
-                          <input type="text" name="Phone" ngModel placeholder="Phone Number" required>
-                          
+                          <input type="text" #ph="ngModel" name="Phone" ngModel placeholder="Phone Number" required>
+                          <p *ngIf="ph.touched && ph.invalid" class="alert alert-danger">
+                            Please enter phone number
+                          </p>
                           <input type="submit" value="Register">
                         </form>
                       </div>

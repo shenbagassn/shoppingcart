@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,10 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class UsersService {
 
-  constructor() { }
+  constructor( public http:HttpClient)// inbuilt angular service- for AJAX call
+   { }
 
   registration(formdata:any){
     console.log( formdata);
+
     
   }
 }
