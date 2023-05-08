@@ -1,5 +1,6 @@
 <div class="w3l_banner_nav_right">
     <!-- login -->
+   
             <div class="w3_login">
                 <h3>Sign In & Sign Up</h3>
                 <div class="w3_login_module">
@@ -9,10 +10,23 @@
                       </div>
                       <div class="form">
                         <h2>Login to your account</h2>
-                        <form action="#" method="post">
-                          <input type="text" name="Username" placeholder="Username" required=" ">
-                          <input type="password" name="Password" placeholder="Password" required=" ">
-                          <input type="submit" value="Login">
+                         <!--Reactive Form-->
+                        <form [formGroup]="loginForm" (submit)="doLogin()">
+                          <input type="text" formControlName="Username" placeholder="Username">
+                          <p *ngIf="loginForm.get('Username').touched && loginForm.get('Username').invalid" class="alert alert-danger" >
+                            Please Enter username
+                          </p>
+                          <input type="password" formControlName="Password" placeholder="Password">
+                          
+                          <p *ngIf="loginForm.get('Password').touched && loginForm.get('Password').errors?.['required']" class="alert alert-danger">
+                            Please Enter Password
+                          </p>
+                          <p *ngIf="loginForm.get('Password').errors?.['minlength']" class="alert alert-danger">
+                            Please Enter minimum 4 characters
+                          </p>
+                          {{loginForm.get('Password').errors|json}}
+                         
+                          <input type="submit" value="Login" [disabled]="loginForm.invalid">
                         </form>
                       </div>
                       <div class="form">
